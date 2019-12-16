@@ -1,1 +1,1 @@
-# openweathermapthing
+openweathermap-cli
