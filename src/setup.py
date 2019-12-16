@@ -1,13 +1,12 @@
 import chalk
 from pyfiglet import Figlet
 import sqlite3
+from sys import path
+print(path)
 
 # SQLite
-# Connect to db stored in db path
-conn = sqlite3.connect("../db/config.db")
-
-# Allow for execution of sql statements
-cursor = conn.cursor()
+path.insert(1, "../db")
+from db import sqlite3db
 
 def setup():
     fig = Figlet()
@@ -16,16 +15,9 @@ def setup():
     # Create array for appid key
     appid_input = input("What is your app_id? : ")
     if (len(appid_input) < 32):
-        print("test")
-    else:
+        print("The app_id for openweathermap is 32 characters")
+    elif (len(appid_input) >= 32):
         # Insert app_id into database
-        cursor.execute(f"INSERT INTO config VALUES ('{appid_input}')")
-        
-        x = cursor.execute("SELECT * FROM config")
-        print(x.fetchall())
+        sqlite3db(conn="config.db", exec_sql=f"INSERT INTO config VALUES ('{appid_input}')")
 
-        # Save x into db
-        conn.commit()
-
-        conn.close()
 setup()
