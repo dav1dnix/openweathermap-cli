@@ -1,24 +1,23 @@
 import requests
 import chalk
-import sqlite3
+import json
 import argparse
 
-from sys import path
+with open("./config.json") as json_file:
+	x = json.load(json_file)
 
-# This inserts the path in sys.path second to the first value. This guarentees that this path is
-# searched before others
-path.insert(1, "../db")
+parser = argparse.ArgumentParser(description="Get information about the weather")
 
-# From package (db directory) import function (sqlite3db) from module (db.py)
-from db import sqlite3db
+# --location argument
+parser.add_argument("--location", "-l", type=str, help="location", metavar="", required=True)
 
-# Runs the sqlite3db function with these keyword arguments.
-x = sqlite3db(conn="../db/config.db", exec_sql="SELECT * FROM config")
+arguments = parser.parse_args()
 
 def weather(location):
 	url = "https://api.openweathermap.org/data/2.5/weather?q="
-	appid = f"&appid="
-	response = requests.get(f"{url}{location}{appid}")
-	# print(response.json())
-# Call function weather
-weather("London")
+	api_key = f"&appid={x['api_key']}"
+	response = (f"{url}{location}{api_key}")
+	return requests.get(response).json()
+
+if __name__ == "__main__":
+	print(weather(arguments.location))
