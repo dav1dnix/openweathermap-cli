@@ -3,8 +3,25 @@
         <title>Weather ☀️</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+    
+		<!-- CSS --> 
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"} />
+	</head>
     <body>
-        <h1 style="color: blue;">{{message}}</h1>
+		<div class="weather">
+			<h1>Weather ☀️</h1>
+		
+			<input type="text" placeholder="Enter a location.." id="weatherinput">
+			<button>Get weather</button>	
+		
+			<script>
+				const input = document.getElementById("weatherinput");
+
+				document.querySelector("button").onclick = () => {
+					console.log({{message}});
+				};
+			</script>
+		</div>
     </body>
 </html>
