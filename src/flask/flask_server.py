@@ -15,12 +15,16 @@ class Weather:
         self.country = country
 
 # Data
-location = w["name"]
-weather = w["weather"][0]["description"]
-country = w["sys"]["country"]
-temp = w["main"]["temp"]
-tempFeelsLike = w["main"]["feels_like"]
-print(temp)
+
+# Change kelvin to celsius
+K = 273.15
+
+location = f"Location: {w['name']}"
+weather = f"Weather: {w['weather'][0]['description']}"
+country = f"Country: {w['sys']['country']}"
+temp = f"Temperature: {round(w['main']['temp'] - K, 2)}°c"
+tempFeelsLike = f"Temperature feels like: {round(w['main']['feels_like'] - K, 2)}°c"
+print(tempFeelsLike)
 
 # Instance of class Flask
 # needed so Flask knows where to look for static files etc
