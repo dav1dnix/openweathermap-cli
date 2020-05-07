@@ -15,6 +15,10 @@
 			<form action="{{ url_for("testfunction") }}" method="POST">
 				<input type="text" name="weather" placeholder="Enter a location..">
 				<input type="submit" value="Get weather">	
+				
+				<!-- This will stop the negative margin in the class "weather" from pulling
+				the footer up, and covering any content -->
+				<div class="footer">	
 			</form>
 		</div>
 
