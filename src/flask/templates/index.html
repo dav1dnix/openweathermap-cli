@@ -11,17 +11,11 @@
     <body>
 		<div class="weather">
 			<h1>Weather ☀️</h1>
-		
-			<input type="text" placeholder="Enter a location.." id="weatherinput">
-			<button>Get weather</button>	
-		
-			<script>
-				const input = document.getElementById("weatherinput");
 
-				document.querySelector("button").onclick = () => {
-					console.log({{message}});
-				};
-			</script>
+			<form action="{{ url_for("testfunction") }}" method="POST">
+				<input type="text" name="weather" placeholder="Enter a location..">
+				<input type="submit" value="Get weather">	
+			</form>
 		</div>
 
 		<footer class="footer">
