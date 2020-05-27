@@ -3,7 +3,7 @@ import chalk
 import json
 import argparse
 
-with open("../config.json") as json_file:
+with open("../../config.json") as json_file:
 	x = json.load(json_file)
 
 #parser = argparse.ArgumentParser(description="Get information about the weather")
